@@ -2,6 +2,8 @@ package novelis.miniprojet.cruddemo.miniProjectcrudDemo.rest;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.service.CollaboratorService;
 
-@Api(description = "API pour les opérations CRUD sur les collaborateurs ")
+@Api(description = "Collaborators management ")
 @RestController
 //@RequestMapping("/crud")
 public class CollaboratorRestController {
@@ -33,7 +35,7 @@ public class CollaboratorRestController {
 
 	/*Step 1 : Read all Collaborators*/
 	
-	@ApiOperation(value = "Récupère la liste des collaborateurs")
+	@ApiOperation(value = "to retrieve all the collaborators")
 	@GetMapping("/Collaborators")
 	public List<CollaboratorDto> findAll() {
 		return collaboratorService.findAll();
@@ -41,7 +43,7 @@ public class CollaboratorRestController {
 
 	/*Step 2 : Read a Single Collaborator*/
 	
-	@ApiOperation(value = "Récupère un collaborateur grâce à son ID à condition que celui-ci existe!")
+	@ApiOperation(value = "to retrieve an existed collaborator")
 	@GetMapping("/Collaborators/{collaboratorId}")
 	public CollaboratorDto getCollaborator(@PathVariable int collaboratorId) {
 
@@ -51,9 +53,9 @@ public class CollaboratorRestController {
 
 	/*Step 3 : Add a new Collaborator*/
 	
-	@ApiOperation(value = "ajoute un collaborateur")
+	@ApiOperation(value = "to add a new collaborator")
 	@PostMapping("/Collaborators")
-	public ResponseEntity<Void> addCollaborator(@RequestBody CollaboratorDto theCollaboratorDto) {
+	public ResponseEntity<Void> addCollaborator(@Valid @RequestBody CollaboratorDto theCollaboratorDto) {
 //		// also just in case they pass an id in JSON ... set id to 0
 //		// this is to force a save of new item ... instead of update
 //
@@ -67,7 +69,7 @@ public class CollaboratorRestController {
 
 	/* Step 4 : Update Collaborator */
 
-	@ApiOperation(value = "modifie un collaborateur")
+	@ApiOperation(value = "to update a collaborator")
 	@PutMapping("/Collaborators")
 	public CollaboratorDto updateCollaborator(@RequestBody CollaboratorDto theCollaboratorDto) {
 
@@ -77,7 +79,7 @@ public class CollaboratorRestController {
 	
 	/*Step 5 : Delete an Collaborator*/
 
-	@ApiOperation(value = "supprime un collaborateur grâce à son ID à condition que celui-ci existe!")
+	@ApiOperation(value = "to delete an existed collaborator by his ID!")
 	@DeleteMapping("/Collaborators/{collaboratorId}")
 	public ResponseEntity<Collaborator> deleteCollaborator(@PathVariable int collaboratorId) {
 

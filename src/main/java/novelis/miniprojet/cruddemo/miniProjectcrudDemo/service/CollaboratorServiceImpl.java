@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dao.CollaboratorRepository;
@@ -32,16 +35,12 @@ private CollaboratorDto cdt;
 
         for (Collaborator c : collaborators) {
 
-        	collaboratorDtos.add(new CollaboratorDto(c.getFirstName(), c.getLastName(), c.getCivility(), c.getEmail(), c.getPhoneNumber(), c.getBirthDate()));
+        	collaboratorDtos.add(new CollaboratorDto(c.getId(), c.getFirstName(), c.getLastName(), c.getCivility(), c.getEmail(), c.getPhoneNumber(), c.getBirthDate()));
         }
 
         return collaboratorDtos;
 	}
 	
-	
-	
-	public void mapperCollab() {
-	}
 
 	@Override
 	public CollaboratorDto findById(int theId) {
@@ -49,7 +48,7 @@ private CollaboratorDto cdt;
 		Optional<Collaborator> result = CollaboratorRepository.findById(theId);
 		
 		if(result.isPresent()) {
-			return (new CollaboratorDto(result.get().getFirstName(), result.get().getLastName(), result.get().getCivility(), result.get().getEmail(), result.get().getPhoneNumber(), result.get().getBirthDate()));
+			return (new CollaboratorDto(result.get().getId(), result.get().getFirstName(), result.get().getLastName(), result.get().getCivility(), result.get().getEmail(), result.get().getPhoneNumber(), result.get().getBirthDate()));
 		}else {
 			// Collaborator not found 
 			throw new RuntimeException("Did not find Collaborator id - "+theId);
@@ -72,7 +71,7 @@ private CollaboratorDto cdt;
 			CollaboratorRepository.deleteById(theId);
 
         } else {
-            throw new RuntimeException("Did not find Collaborator id - "+theId);
+            throw new RuntimeException("Could not find a Collaborator id - "+theId);
         }
 	}
 	
@@ -91,7 +90,7 @@ private CollaboratorDto cdt;
 
         } else {
 
-            throw new RuntimeException("Could not find a Coollaborator with id " + collaboratorDto.getId());
+            throw new RuntimeException("Could not find a Collaborator with id " + collaboratorDto.getId());
         }
 
     }

@@ -16,8 +16,8 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("novelis.miniprojet.cruddemo.miniProjectcrudDemo.rest")) //Nous utilisons la méthode basePackage du prédicat RequestHandlerSelectors afin de demander à Swagger de ne rien documenter en dehors du package "web" qui contient notre code
-                .paths(PathSelectors.regex("/Collaborateurs.*")) //PathSelectors.regex("/Produits.*") permet de passer une expression régulière qui n'accepte que les URI commençant par /Produits
+                .apis(RequestHandlerSelectors.basePackage("novelis.miniprojet.cruddemo.miniProjectcrudDemo")) //Nous utilisons la méthode basePackage du prédicat RequestHandlerSelectors afin de demander à Swagger de ne rien documenter en dehors du package "web" qui contient notre code
+                .paths(PathSelectors.regex("/Collaborators.*")) //PathSelectors.regex("/Produits.*") permet de passer une expression régulière qui n'accepte que les URI commençant par /Produits
                 .build();
     }
 }

@@ -19,21 +19,22 @@ public class CollaboratorDto {
 	private Date birthDate;
 
 	private String civility;
-	
 
-	// define getter/setter
-
-	public int getId() {
-		return id;
-	}
-
-	public CollaboratorDto(String firstName, String lastName, String civility, String email, String phoneNumber, Date birthDate) {
+	public CollaboratorDto(int id ,String firstName, String lastName, String civility, String email, String phoneNumber,
+			Date birthDate) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.birthDate = birthDate;
 		this.civility = civility;
+	}
+
+	// define getter/setter
+
+	public int getId() {
+		return id;
 	}
 
 	public String getFirstName() {
@@ -93,10 +94,10 @@ public class CollaboratorDto {
 		return "Collaborateur [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", phoneNumber=" + phoneNumber + ", birthDate=" + birthDate + ", civility=" + civility + "]";
 	}
-	
+
 	public Collaborator convertToCollaborator() {
 
-        return new Collaborator(firstName, lastName, civility, email, phoneNumber, birthDate);
-    }
-	
+		return new Collaborator(id, firstName, lastName, civility, email, phoneNumber, birthDate);
+	}
+
 }
