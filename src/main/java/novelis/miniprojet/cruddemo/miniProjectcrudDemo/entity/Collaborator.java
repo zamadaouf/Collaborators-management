@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 
@@ -25,39 +24,49 @@ public class Collaborator{
 	@Column(name = "id")
 	private int id;
 
-	@NotNull
+	
+	@NotNull(message = "please enter your first name")
 	@Pattern(    
-			regexp = "^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ\\s-]{2,30})$\r\n",
+			regexp = "([A-Za-z 'àäâéèêëôöùûüçÀÂÉÈÔÙÛÇ-]){2,30}",
 			message = "the first name should has betwen 2 and 30 character")
-//	@Size(max = 5, message = "to big!!!********************")
-//	@Size(min = 2, message = "to small!!!********************")
 	@Column(name = "first_name")
 	private String firstName;
 
-	@NotNull
-//	@Pattern(    
-//			regexp = "^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ\\s-]{2,30})$\r\n",
-//			message = "the last name should has betwen 2 and 30 character")
+	
+	@NotNull(message = "please enter your last name")
+	@Pattern(    
+			regexp = "([A-Za-z 'àäâéèêëôöùûüçÀÂÉÈÔÙÛÇ-]){2,30}",
+			message = "the last name should has betwen 2 and 30 character")
 	@Column(name = "last_name")
 	private String lastName;
 
-	@NotNull
-	@Email
+	
+	@NotNull(message = "please enter your email address")
+	@Email(message = "the email is not valid")
 	@Column(name = "email")
 	private String email;
 	
-	@NotNull
+	
+	@NotNull(message = "please enter your phone number")
 	@Pattern(    
-			regexp = "^\\d+$",
+			regexp = "(^0[0-9]{9}$|^00[0-9]{11,13}$)",
 			message = "this phone number is not valide")
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	@NotNull
+	
+	@NotNull(message = "please enter your birth date")
+//	@Pattern(    
+//			regexp = "((?:19|20)[0-9]{2})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])",
+//			message = "the date is not valide")
 	@Column(name = "birth_date")
 	private Date birthDate;
 
-	@NotNull
+	
+	@NotNull(message = "please enter your civility")
+	@Pattern(    
+			regexp = "(M.|Mme)",
+			message = "the civility is not valide")
 	@Column(name = "civility")
 	private String civility;
 	

@@ -2,11 +2,13 @@ package novelis.miniprojet.cruddemo.miniProjectcrudDemo.rest;
 
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +23,9 @@ import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.service.CollaboratorService;
 
-@Api(description = "Collaborators management ")
+//@Api(value = "Employee", description = "REST API for Employee", tags = { "Employee" })
+@Api( value = "Collaborator",description = "Collaborators management ", tags = { "Employee" })
 @RestController
-//@RequestMapping("/crud")
 public class CollaboratorRestController {
 
 	private CollaboratorService collaboratorService;
@@ -71,8 +73,10 @@ public class CollaboratorRestController {
 
 	@ApiOperation(value = "to update a collaborator")
 	@PutMapping("/Collaborators")
-	public CollaboratorDto updateCollaborator(@RequestBody CollaboratorDto theCollaboratorDto) {
-
+	public CollaboratorDto updateCollaborator(@RequestBody CollaboratorDto theCollaboratorDto, BindingResult result) {
+		if(result.hasErrors()) {
+			throw new RuntimeException(" errooooor");
+		}
 		return collaboratorService.updateCollaborator(theCollaboratorDto);
 
 	}
