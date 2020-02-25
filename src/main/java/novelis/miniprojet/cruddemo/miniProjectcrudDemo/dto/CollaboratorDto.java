@@ -1,8 +1,9 @@
 package novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto;
 
-import javax.persistence.Entity;
+import java.util.Date;
 
-@Entity
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
+
 public class CollaboratorDto {
 
 	private int id;
@@ -15,13 +16,10 @@ public class CollaboratorDto {
 
 	private String phoneNumber;
 
-	private String birthDate;
+	private Date birthDate;
 
 	private String civility;
-
-	public CollaboratorDto() {
-
-	}
+	
 
 	// define getter/setter
 
@@ -29,8 +27,7 @@ public class CollaboratorDto {
 		return id;
 	}
 
-	public CollaboratorDto(String firstName, String lastName, String email, String phoneNumber, String birthDate,
-			String civility) {
+	public CollaboratorDto(String firstName, String lastName, String civility, String email, String phoneNumber, Date birthDate) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -71,11 +68,11 @@ public class CollaboratorDto {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -96,4 +93,10 @@ public class CollaboratorDto {
 		return "Collaborateur [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", phoneNumber=" + phoneNumber + ", birthDate=" + birthDate + ", civility=" + civility + "]";
 	}
+	
+	public Collaborator convertToCollaborator() {
+
+        return new Collaborator(firstName, lastName, civility, email, phoneNumber, birthDate);
+    }
+	
 }

@@ -11,7 +11,9 @@ public interface CollaboratorService {
 	
 	public CollaboratorDto findById(int theID);
 	
-	public void save(CollaboratorDto theCollaborator);
+	public CollaboratorDto save(CollaboratorDto theCollaborator);
 	
 	public void deleteById(int theId);
+	
+	public CollaboratorDto updateCollaborator(CollaboratorDto collaboratorDto);
 }

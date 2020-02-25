@@ -45,29 +45,23 @@ public class CollaboratorRestController {
 	@GetMapping("/Collaborators/{collaboratorId}")
 	public CollaboratorDto getCollaborator(@PathVariable int collaboratorId) {
 
-		CollaboratorDto theCollaborator = collaboratorService.findById(collaboratorId);
+		return collaboratorService.findById(collaboratorId);
 
-		if (theCollaborator == null) {
-			throw new RuntimeException("Collaborator id not found - " + collaboratorId);
-		}
-
-		return theCollaborator;
 	}
 
 	/*Step 3 : Add a new Collaborator*/
 	
 	@ApiOperation(value = "ajoute un collaborateur")
 	@PostMapping("/Collaborators")
-	public ResponseEntity<Void> addCollaborator(@RequestBody CollaboratorDto theCollaborator) {
-		// also just in case they pass an id in JSON ... set id to 0
-		// this is to force a save of new item ... instead of update
+	public ResponseEntity<Void> addCollaborator(@RequestBody CollaboratorDto theCollaboratorDto) {
+//		// also just in case they pass an id in JSON ... set id to 0
+//		// this is to force a save of new item ... instead of update
+//
+//		theCollaborator.setId(0);
 
-		theCollaborator.setId(0);
-
-		collaboratorService.save(theCollaborator);
+		collaboratorService.save(theCollaboratorDto);
 
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
-//		return theCollaborator;
 
 	}
 
@@ -75,30 +69,29 @@ public class CollaboratorRestController {
 
 	@ApiOperation(value = "modifie un collaborateur")
 	@PutMapping("/Collaborators")
-	public CollaboratorDto updateCollaborator(@RequestBody CollaboratorDto theCollaborator) {
+	public CollaboratorDto updateCollaborator(@RequestBody CollaboratorDto theCollaboratorDto) {
 
-		collaboratorService.save(theCollaborator);
+		return collaboratorService.updateCollaborator(theCollaboratorDto);
 
-		return theCollaborator;
 	}
 	
 	/*Step 5 : Delete an Collaborator*/
 
 	@ApiOperation(value = "supprime un collaborateur grâce à son ID à condition que celui-ci existe!")
 	@DeleteMapping("/Collaborators/{collaboratorId}")
-	public String deleteCollaborator(@PathVariable int collaboratorId) {
+	public ResponseEntity<Collaborator> deleteCollaborator(@PathVariable int collaboratorId) {
 
-		CollaboratorDto theCollaborator = collaboratorService.findById(collaboratorId);
+		CollaboratorDto theCollaboratorDto = collaboratorService.findById(collaboratorId);
 
 		// throw exception if null
 
-		if (theCollaborator == null) {
+		if (theCollaboratorDto == null) {
 			throw new RuntimeException("Collaborator id not found - " + collaboratorId);
 		}
 
 		collaboratorService.deleteById(collaboratorId);
 
-		return "Deleted Collaborator id - " + collaboratorId;
+		return ResponseEntity.accepted().build();
 	}
 
 }

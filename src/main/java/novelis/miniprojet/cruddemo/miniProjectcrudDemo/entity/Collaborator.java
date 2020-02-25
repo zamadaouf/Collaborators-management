@@ -1,15 +1,20 @@
 package novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
+
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 
 @Entity
 @Table(name = "collaborators")
-public class Collaborator {
+public class Collaborator implements Serializable{
 	
 	// define fields
 	@Id
@@ -29,8 +34,8 @@ public class Collaborator {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	@Column(name = "birth-date")
-	private String birthDate;
+	@Column(name = "birth_date")
+	private Date birthDate;
 
 	@Column(name = "civility")
 	private String civility;
@@ -43,13 +48,8 @@ public class Collaborator {
 	// define constructor
 	
 
-	// define getter/setter
-
-	public int getId() {
-		return id;
-	}
-
-	public Collaborator(String firstName, String lastName, String email, String phoneNumber, String birthDate, String civility) {
+	public Collaborator(String firstName, String lastName, String civility,
+			String email, String phoneNumber, Date birthDate) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -59,6 +59,12 @@ public class Collaborator {
 	}
 
 
+	// define getter/setter
+
+	public int getId() {
+		return id;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -91,11 +97,11 @@ public class Collaborator {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -117,5 +123,24 @@ public class Collaborator {
 				+ ", phoneNumber=" + phoneNumber + ", birthDate=" + birthDate + ", civility=" + civility + "]";
 	}
 
+	//convert to/from DTO
+	
+
+    public CollaboratorDto convertToDto() {
+        return new CollaboratorDto(firstName, lastName, civility, email, phoneNumber, birthDate);
+    }
+
+
+    public Collaborator updateFromDto(CollaboratorDto collaboratorDto) {
+
+    	this.setId(collaboratorDto.getId());
+		this.setFirstName(collaboratorDto.getFirstName());
+		this.setLastName(collaboratorDto.getLastName());
+		this.setCivility(collaboratorDto.getCivility());
+		this.setEmail(collaboratorDto.getEmail());
+		this.setPhoneNumber(collaboratorDto.getPhoneNumber());
+
+        return this;
+    }
 
 }
