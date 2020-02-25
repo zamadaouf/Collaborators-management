@@ -3,17 +3,21 @@ package novelis.miniprojet.cruddemo.miniProjectcrudDemo.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dao.CollaboratorRepository;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
 
 @Service
 public class CollaboratorServiceImpl implements CollaboratorService {
 
 private CollaboratorRepository CollaboratorRepository;
-	
+
+private CollaboratorDto cdt;
+
 	@Autowired
 	public CollaboratorServiceImpl(CollaboratorRepository theCollaboratorRepository) {
 		CollaboratorRepository = theCollaboratorRepository;
@@ -25,9 +29,9 @@ private CollaboratorRepository CollaboratorRepository;
 		return CollaboratorRepository.findAll();
 	}
 	
-	private void mapperCollab() {
-		// TODO Auto-generated method stub
-
+	public void mapperCollab() {
+		Collaborator c = new Collaborator();
+		BeanUtils.copyProperties(cdt, c);
 	}
 
 	@Override
