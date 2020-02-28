@@ -2,7 +2,6 @@ package novelis.miniprojet.cruddemo.miniProjectcrudDemo.rest;
 
 import java.util.List;
 
-import javax.management.RuntimeErrorException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,7 @@ import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.service.CollaboratorService;
 
-//@Api(value = "Employee", description = "REST API for Employee", tags = { "Employee" })
-@Api( value = "Collaborator",description = "Collaborators management ", tags = { "Employee" })
+@Api( value = "Collaborator",description = "Collaborators management ", tags = { "Collaborators" })
 @RestController
 public class CollaboratorRestController {
 
