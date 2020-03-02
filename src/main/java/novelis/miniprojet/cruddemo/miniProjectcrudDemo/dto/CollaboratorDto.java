@@ -38,8 +38,7 @@ public class CollaboratorDto {
 	@Pattern(regexp = "(M.|Mme)", message = "the civility is not valide")
 	private String civility;
 
-	public CollaboratorDto(int id, String firstName, String lastName, String civility, String email, String phoneNumber,
-			Date birthDate) {
+	public CollaboratorDto(int id, String firstName, String lastName, String civility, Date birthDate, String email, String phoneNumber) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -115,7 +114,7 @@ public class CollaboratorDto {
 
 	public Collaborator convertToCollaborator() {
 
-		return new Collaborator(id, firstName, lastName, civility, email, phoneNumber, birthDate);
+		return new Collaborator(id, firstName, lastName, civility, birthDate, email, phoneNumber);
 	}
 
 }

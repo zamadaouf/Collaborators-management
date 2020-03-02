@@ -35,7 +35,7 @@ private CollaboratorDto cdt;
 
         for (Collaborator c : collaborators) {
 
-        	collaboratorDtos.add(new CollaboratorDto(c.getId(), c.getFirstName(), c.getLastName(), c.getCivility(), c.getEmail(), c.getPhoneNumber(), c.getBirthDate()));
+        	collaboratorDtos.add(new CollaboratorDto(c.getId(), c.getFirstName(), c.getLastName(), c.getCivility(), c.getBirthDate(), c.getEmail(), c.getPhoneNumber()));
         }
 
         return collaboratorDtos;
@@ -48,7 +48,7 @@ private CollaboratorDto cdt;
 		Optional<Collaborator> result = CollaboratorRepository.findById(theId);
 		
 		if(result.isPresent()) {
-			return (new CollaboratorDto(result.get().getId(), result.get().getFirstName(), result.get().getLastName(), result.get().getCivility(), result.get().getEmail(), result.get().getPhoneNumber(), result.get().getBirthDate()));
+			return (new CollaboratorDto(result.get().getId(), result.get().getFirstName(), result.get().getLastName(), result.get().getCivility(), result.get().getBirthDate(), result.get().getEmail(), result.get().getPhoneNumber()));
 		}else {
 			// Collaborator not found 
 			throw new RuntimeException("Did not find Collaborator id - "+theId);

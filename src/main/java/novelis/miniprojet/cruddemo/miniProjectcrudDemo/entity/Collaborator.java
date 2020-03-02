@@ -1,6 +1,11 @@
 package novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 
@@ -33,7 +40,9 @@ public class Collaborator {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 
+	
 	@Column(name = "birth_date")
+	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date birthDate;
 
 	@Column(name = "civility")
@@ -45,8 +54,7 @@ public class Collaborator {
 
 	// define constructor
 
-	public Collaborator(int id, String firstName, String lastName, String civility, String email, String phoneNumber,
-			Date birthDate) {
+	public Collaborator(int id, String firstName, String lastName, String civility, Date birthDate, String email, String phoneNumber) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -95,8 +103,17 @@ public class Collaborator {
 	}
 
 	public Date getBirthDate() {
+//		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+//        String dateOfBirth = formatter.format(birthDate);
+//		try {
+//			birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(dateOfBirth);
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}  
 		return birthDate;
 	}
+	
+	
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
@@ -123,7 +140,7 @@ public class Collaborator {
 	// convert to/from DTO
 
 	public CollaboratorDto convertToDto() {
-		return new CollaboratorDto(id, firstName, lastName, civility, email, phoneNumber, birthDate);
+		return new CollaboratorDto(id, firstName, lastName, civility, birthDate, email, phoneNumber);
 	}
 
 	public Collaborator updateFromDto(CollaboratorDto collaboratorDto) {
@@ -132,6 +149,7 @@ public class Collaborator {
 		this.setFirstName(collaboratorDto.getFirstName());
 		this.setLastName(collaboratorDto.getLastName());
 		this.setCivility(collaboratorDto.getCivility());
+		this.setBirthDate(collaboratorDto.getBirthDate());
 		this.setEmail(collaboratorDto.getEmail());
 		this.setPhoneNumber(collaboratorDto.getPhoneNumber());
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Informations</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	crossorigin="anonymous">
+<link href="infoStyle.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="./headerStyle.css">
+</head>
+<body>
+
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<img height="55" alt="novelis" src="./novelis-logo.jpg">
+			<div><a class="navbar-brand" href="#">Collaborators</a></div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="manage-collabs collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active">
+                        <a class="nav-link" href="">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="">Collaborators' List</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="">Add Collaborator</a>
+                    </li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search">
+					<button class="btn btn-outline-search my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div>
+		</nav>
+	</header>	
+	<div class="container" >
+		<div class="row">
+			<div class="col-sm-3 bg-img">
+				<img src="./avatar-blank-profile.png" class="avatar-blank-profile img-thumbnail">
+			</div>
+			<div class="col-sm-9 bg-infos">
+				<br>
+				<div class="d-flex flex-column ">
+					<div class="p-2 bd-highlight">NOM</div>
+					<div class="p-2 bd-highlight">Prénom</div>
+					<div class="p-2 bd-highlight">date/de/naissane</div>
+					<div class="p-2 bd-highlight">email@email.com</div>
+					<div class="p-2 bd-highlight">0600000000</div>
+					<br>
+				</div>
+				<div class="row ">
+				  <div class="col align-self-end">
+					<div class=" d-flex flex-row-reverse ">
+						<div class="p-2 bd-highlight">
+							<button type="submit" class="btn btn-primary"><span class="icon"><i class="fa fa-trash" aria-hidden="true"></i></span></button>
+						</div>
+						<div class="p-2 bd-highlight">
+							<button type="submit" class="btn btn-primary"><span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span></button>
+						</div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

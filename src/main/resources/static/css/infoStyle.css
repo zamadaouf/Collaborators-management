@@ -1,0 +1,40 @@
+html{
+	--myBleu:#093F4F;
+	--myRed:#91090B;
+	--myBackground:#91090B15;
+}
+
+body{
+	background-color: var(--myBackground);
+}
+.container{
+	position: relative;
+	box-shadow:1px 1px 10px 10px #CACACA;
+	margin-top: 5%;
+
+}
+img.avatar-blank-profile{
+	width: 180px;
+	position: absolute;
+	margin: 13%;
+
+}
+.img-thumbnail{
+	padding: 0;
+	max-width: initial;
+}
+div .bg-img{
+	background-color:var(--myRed);
+	height: 480px;
+}
+
+.bg-infos{
+	background-color: #fcf6f5;
+	font-weight: bold;
+	font-size: 20px;
+	color: var(--myBleu);
+}
+.btn-primary{
+	background-color: var(--myBleu);
+	border-color: var(--myBleu);
+}
