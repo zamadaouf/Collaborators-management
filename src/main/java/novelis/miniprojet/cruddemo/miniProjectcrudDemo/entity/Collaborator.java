@@ -133,8 +133,8 @@ public class Collaborator {
 
 	@Override
 	public String toString() {
-		return "Collaborateur [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", phoneNumber=" + phoneNumber + ", birthDate=" + birthDate + ", civility=" + civility + "]";
+		return "Collaborateur [ id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", civility=" + civility + ", birthDate=" + birthDate + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + "]";
 	}
 
 	// convert to/from DTO

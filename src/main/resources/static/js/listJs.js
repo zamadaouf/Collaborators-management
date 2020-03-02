@@ -28,19 +28,35 @@ window.onload = () => {
 			emailTd.textContent       = `${obj.email}`;			
 			const phoneNumberTd       = document.createElement('td');
 			phoneNumberTd.textContent = `${obj.phoneNumber}`;			
-				    
-	   	    tr.appendChild(idTd);
+			
+			var attClass = document.createAttribute("class");
+			attClass.value = "table-row";
+			
+			var attHref = document.createAttribute("data-href");
+			attHref.value = "http://localhost:8080/Collab/"+obj.id;
+	   	    tr.setAttributeNode(attClass);
+	   	    tr.setAttributeNode(attHref);
+	   	    
+			tr.appendChild(idTd);
 	   	    tr.appendChild(prenomTd);
 	   	    tr.appendChild(nomTd);
 	   	    tr.appendChild(civilityTd);
 	   	    tr.appendChild(birthTd); 
 	   	    tr.appendChild(emailTd);
 	   	    tr.appendChild(phoneNumberTd); 
-	   	    console.log(nomTd);
-
 	 	
 	 	table.querySelector('tbody').appendChild(tr);
+	 	
+	 	tr.addEventListener('click', event => {
+	 		localStorage.setItem('id',obj.id);
+	 		window.document.location = 'collab';
+	 	})
     });
     })
     .catch(err => console.log('Error:', err));
 };
+
+
+$("body").on("click", ".table-row", function(event) { //bind the parent and specify event and the element that we want to apply the event on it
+	window.document.location = $(this).data("href");
+});
