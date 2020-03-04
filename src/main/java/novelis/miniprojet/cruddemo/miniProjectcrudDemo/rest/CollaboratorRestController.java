@@ -1,10 +1,17 @@
 package novelis.miniprojet.cruddemo.miniProjectcrudDemo.rest;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -14,12 +21,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dao.CollaboratorRepository;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.pagination.AppResponse;
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.pagination.CollaboratorListResponse;
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.pagination.PageMeta;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.service.CollaboratorService;
 
 @Api( value = "Collaborator",description = "Collaborators management ", tags = { "Collaborators" })
@@ -29,10 +41,26 @@ public class CollaboratorRestController {
 	private CollaboratorService collaboratorService;
 
 	@Autowired
+	private CollaboratorRepository collaboratorRepository;
+	
+	@Autowired
 	public CollaboratorRestController(CollaboratorService theCollaboratorService) {
 		collaboratorService = theCollaboratorService;
 	}
 
+	@ApiOperation(value = "pagination")
+	@GetMapping("/Collaborators/page")
+	public AppResponse index(@RequestParam(value = "page", defaultValue = "1") int page,
+            				@RequestParam(value = "page_size", defaultValue = "4") int pageSize,
+            				HttpServletRequest request) {
+		
+		Pageable pageable = getPageable(page, pageSize);
+		Page<Collaborator> collaborators = this.collaboratorRepository.findAll(pageable);
+		Collection<CollaboratorDto> collaboratorDTOs = buildCollaborators(collaborators);
+		return new CollaboratorListResponse(PageMeta.build(collaborators, request.getRequestURI()), collaboratorDTOs);
+	
+	}
+	
 	/*Step 1 : Read all Collaborators*/
 	
 	@ApiOperation(value = "to retrieve all the collaborators")
@@ -97,5 +125,24 @@ public class CollaboratorRestController {
 
 		return ResponseEntity.accepted().build();
 	}
+	
+	/*Pagination*/
+	private Pageable getPageable(int page, int pageSize) {
+        if (page <= 0)
+            page = 1;
 
+        if (pageSize <= 0)
+            pageSize = 2;
+
+        PageRequest pageRequest = PageRequest.of(page - 1, pageSize, Sort.Direction.ASC,"id");
+        
+        return pageRequest;
+    }
+	
+	private List<CollaboratorDto> buildCollaborators(Page<Collaborator> collaborator) {
+        List<CollaboratorDto> collaboratorDTOs = collaborator.getContent().stream().map(CollaboratorDto::build).collect(Collectors.toList());
+        return collaboratorDTOs;
+    }
+	
+	
 }

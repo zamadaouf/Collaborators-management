@@ -7,4 +7,5 @@ import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
 
 public interface CollaboratorRepository extends JpaRepository<Collaborator, Integer>, PagingAndSortingRepository<Collaborator, Integer>{
 
+
 }

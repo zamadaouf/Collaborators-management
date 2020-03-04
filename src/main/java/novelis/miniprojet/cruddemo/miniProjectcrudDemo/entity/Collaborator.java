@@ -15,11 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 
 @Entity
 @Table(name = "collaborators")
+@JsonPropertyOrder(value = {"id","firstName","lastName","civility","birthDate","email","phoneNumber"})
 public class Collaborator {
 
 	// define fields
@@ -33,6 +35,9 @@ public class Collaborator {
 
 	@Column(name = "last_name")
 	private String lastName;
+	
+	@Column(name = "civility")
+	private String civility;
 
 	@Column(name = "email")
 	private String email;
@@ -45,8 +50,7 @@ public class Collaborator {
 	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date birthDate;
 
-	@Column(name = "civility")
-	private String civility;
+
 
 	public Collaborator() {
 

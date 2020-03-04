@@ -32,6 +32,9 @@ th{
 	background-color: #093F4F99!important;
 	cursor:pointer;
 }
+li:hover{
+	
+}
 
 /* for the loader */
 .loader {

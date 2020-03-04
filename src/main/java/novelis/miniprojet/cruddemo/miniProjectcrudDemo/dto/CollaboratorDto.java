@@ -6,8 +6,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
 
+@JsonPropertyOrder(value = {"id","firstName","lastName","civility","birthDate","email","phoneNumber"})
 public class CollaboratorDto {
 
 	private int id;
@@ -116,5 +119,10 @@ public class CollaboratorDto {
 
 		return new Collaborator(id, firstName, lastName, civility, birthDate, email, phoneNumber);
 	}
-
+	
+	public static CollaboratorDto build(Collaborator collaborator) {
+        return new CollaboratorDto(collaborator.getId(), collaborator.getFirstName(), collaborator.getLastName(),
+        		collaborator.getCivility(), collaborator.getBirthDate(),
+        		collaborator.getEmail(), collaborator.getPhoneNumber());
+    }
 }

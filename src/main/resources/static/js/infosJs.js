@@ -8,6 +8,7 @@ window.onload = () => {
 	fetch(SERVER_URL)
 	.then(res => res.json())
 	.then(data => {
+		
         for (prop in data) {
         	
         	const property = document.createElement('div');

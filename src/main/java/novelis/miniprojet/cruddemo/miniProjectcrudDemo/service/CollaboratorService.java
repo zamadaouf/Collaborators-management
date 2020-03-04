@@ -16,4 +16,6 @@ public interface CollaboratorService {
 	public void deleteById(int theId);
 	
 	public CollaboratorDto updateCollaborator(CollaboratorDto collaboratorDto);
+
+
 }
