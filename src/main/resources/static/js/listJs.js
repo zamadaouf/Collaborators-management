@@ -159,7 +159,6 @@ $("ul").on("click", ".num-page", function(event) {
 })
 
 
-
 /* click on next page event ***********/
 
 $("ul").on("click", ".next-page", function(event) {
@@ -167,20 +166,26 @@ $("ul").on("click", ".next-page", function(event) {
 	if(hasNext){
 		
 		console.log("to next");
-		console.log("numPage"+numPage);
-		console.log("next"+nextPageNumber);
+		console.log("numPage "+currentPage);
+		console.log("next to "+nextPageNumber);
 		
 		fillTable(nextPageNumber);	
+		getPageParam(nextPageNumber);
 	}
 });
+
+
 /* click on pervious page event ***********/
 
 $("ul").on("click", ".prev-page", function(event) {
+	getPageParam(numPage);
 	if(hasPrevPage){
 		console.log("to prev");
-		console.log(numPge);
-		getPageParam(numPage);
-		fillTable(numPage--);
+		console.log("numPage "+currentPage);
+		console.log("prev to "+prevPageNumber);
+		
+		fillTable(prevPageNumber);	
+		getPageParam(prevPageNumber);
 	}
 });
 
