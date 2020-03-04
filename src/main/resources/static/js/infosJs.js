@@ -26,5 +26,14 @@ window.onload = () => {
 /* click on delete event ***********/
 $(".delete-btn").on("click", ".delete", function(event) {
 	
-	console.log("clicked !");
+	fetch("http://localhost:8080/Collaborators/")
+	.then(res => res.json())
+	.then(data => {data.forEach(obj => {
+        if(obj.id==4){
+		    console.log(obj.firstName);
+        }
+      })  
+	})
+
+    .catch(err => console.log('Error:', err));
 })

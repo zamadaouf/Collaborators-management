@@ -192,7 +192,7 @@ $("ul").on("click", ".prev-page", function(event) {
 
 /* click row event ***********/
 $("body").on("click", ".table-row", function(event) { // bind the parent and specify event and the
-//	var collabID = $(this).text()[0]+$(this).text()[1];
+
 	var collabID;
 	var textID =  $(this).text().substring(0,3);
     var matches = textID.match(/(\d+)/); 
