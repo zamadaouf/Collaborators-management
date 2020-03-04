@@ -101,7 +101,7 @@ public class CollaboratorRestController {
 	@PutMapping("/Collaborators")
 	public CollaboratorDto updateCollaborator(@RequestBody CollaboratorDto theCollaboratorDto, BindingResult result) {
 		if(result.hasErrors()) {
-			throw new RuntimeException(" errooooor");
+			throw new RuntimeException(" error");
 		}
 		return collaboratorService.updateCollaborator(theCollaboratorDto);
 

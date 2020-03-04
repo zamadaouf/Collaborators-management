@@ -22,3 +22,9 @@ window.onload = () => {
 
     .catch(err => console.log('Error:', err));
 };
+
+/* click on delete event ***********/
+$(".delete-btn").on("click", ".delete", function(event) {
+	
+	console.log("clicked !");
+})
