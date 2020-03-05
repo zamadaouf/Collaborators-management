@@ -100,6 +100,7 @@ function fillTable(number){
     });
 		  	
 		table.replaceChild(newtbody, tbody);
+//		window.document.location = "http://localhost:8080/Collabs/page"+number;
 		
 	})
     .catch(err => console.log('Error:', err));	
@@ -137,6 +138,7 @@ function setPagination(number){
 			ul.insertBefore(li, nextli);
 				
 	    	}
+	    
 		})
 }
 

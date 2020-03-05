@@ -12,15 +12,14 @@ window.onload = () => {
 	.then(res => res.json())
 	.then(data => {
 		
-        for (prop in data) {
-        	
-        	const property = document.createElement('div');
-    		var attClass = document.createAttribute("class");
-    		attClass.value = "p-2 bd-highlight";
-    		property.setAttributeNode(attClass);
-    		property.textContent=data[prop];
-            collabInfos.appendChild(property);
-        }  
+			for (prop in data) {
+				const property = document.createElement('div');
+				var attClass = document.createAttribute("class");
+				attClass.value = "p-2 bd-highlight";
+				property.setAttributeNode(attClass);
+				property.textContent=data[prop];
+				collabInfos.appendChild(property);
+			}  		
     })
 
     .catch(err => console.log('Error:', err));
@@ -46,3 +45,4 @@ $(".delete-btn").on("click", ".btn-delete", function(event) {
     	  window.location.href = url+'Collabs';
       }
 })
+

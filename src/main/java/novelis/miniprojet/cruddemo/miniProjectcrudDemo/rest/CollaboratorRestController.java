@@ -29,6 +29,7 @@ import io.swagger.annotations.ApiOperation;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dao.CollaboratorRepository;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.exceptionHandler.NotFoundException;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.pagination.AppResponse;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.pagination.CollaboratorListResponse;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.pagination.PageMeta;
@@ -48,6 +49,7 @@ public class CollaboratorRestController {
 		collaboratorService = theCollaboratorService;
 	}
 
+	
 	@ApiOperation(value = "pagination")
 	@GetMapping("/Collaborators/page")
 	public AppResponse index(@RequestParam(value = "page", defaultValue = "1") int page,
@@ -61,6 +63,7 @@ public class CollaboratorRestController {
 	
 	}
 	
+	
 	/*Step 1 : Read all Collaborators*/
 	
 	@ApiOperation(value = "to retrieve all the collaborators")
@@ -69,6 +72,7 @@ public class CollaboratorRestController {
 		return collaboratorService.findAll();
 	}
 
+	
 	/*Step 2 : Read a Single Collaborator*/
 	
 	@ApiOperation(value = "to retrieve an existed collaborator")
@@ -79,6 +83,7 @@ public class CollaboratorRestController {
 
 	}
 
+	
 	/*Step 3 : Add a new Collaborator*/
 	
 	@ApiOperation(value = "to add a new collaborator")
@@ -95,17 +100,20 @@ public class CollaboratorRestController {
 
 	}
 
+	
 	/* Step 4 : Update Collaborator */
 
 	@ApiOperation(value = "to update a collaborator")
 	@PutMapping("/Collaborators")
 	public CollaboratorDto updateCollaborator(@RequestBody CollaboratorDto theCollaboratorDto, BindingResult result) {
 		if(result.hasErrors()) {
-			throw new RuntimeException(" error");
+			
+			new NotFoundException();
 		}
 		return collaboratorService.updateCollaborator(theCollaboratorDto);
 
 	}
+	
 	
 	/*Step 5 : Delete an Collaborator*/
 
@@ -118,7 +126,8 @@ public class CollaboratorRestController {
 		// throw exception if null
 
 		if (theCollaboratorDto == null) {
-			throw new RuntimeException("Collaborator id not found - " + collaboratorId);
+
+			new NotFoundException();
 		}
 
 		collaboratorService.deleteById(collaboratorId);
@@ -126,7 +135,9 @@ public class CollaboratorRestController {
 		return ResponseEntity.accepted().build();
 	}
 	
+	
 	/*Pagination*/
+	
 	private Pageable getPageable(int page, int pageSize) {
         if (page <= 0)
             page = 1;

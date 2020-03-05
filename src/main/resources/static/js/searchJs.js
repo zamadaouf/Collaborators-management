@@ -16,21 +16,33 @@ $("div").on("keyup", ".search-input", function(event) {
 $("div").on("click", ".btn-search", function(event) {
 		
 	var url = "http://localhost:8080/";
-
-	  fetch(url + 'Collaborators/' + input, {
-			method: 'get'
-				
-		    })
-		    .then(response =>
-		     response.json()
-		    .then(json => {
-		      return json;
-		     }))
-		     
-		     .catch(err => console.log('Error:', err));
 	
-		     window.location.href = url+'Collab/'+input;
-		     console.log("final"+input);
+	
+	fetch(url + 'Collaborators/' + input, {
+		method: 'get'
+    })
+	.then(res => {
+		console.log(res);
+					 if(res.status === 200) {
+						res.json();
+						window.location.href = url+'Collab/'+input;
+					 }
+					 else {
+						 res.json().then(data=> {
+								
+								if(data.status !== 200) {
+									window.alert(data.message);
+								}
+
+				     
+						 })
+					 }
+	})
+	.catch(err => console.log('Error:', err));	 
+//	.then(data => {
+//		
+//		console.log("data");
+//    });
 })
 
 

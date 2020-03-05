@@ -10,16 +10,18 @@ import org.springframework.stereotype.Service;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dao.CollaboratorRepository;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.exceptionHandler.NotFoundException;
 
 @Service
 public class CollaboratorServiceImpl implements CollaboratorService{
 
 private CollaboratorRepository CollaboratorRepository;
 
-@Autowired
+	@Autowired
 	public CollaboratorServiceImpl(CollaboratorRepository theCollaboratorRepository) {
 		CollaboratorRepository = theCollaboratorRepository;
 	}
+	
 	
 	@Override
 	public List<CollaboratorDto> findAll() {
@@ -45,8 +47,7 @@ private CollaboratorRepository CollaboratorRepository;
 		if(result.isPresent()) {
 			return (new CollaboratorDto(result.get().getId(), result.get().getFirstName(), result.get().getLastName(), result.get().getCivility(), result.get().getBirthDate(), result.get().getEmail(), result.get().getPhoneNumber()));
 		}else {
-			// Collaborator not found 
-			throw new RuntimeException("Did not find Collaborator id - "+theId);
+			throw new NotFoundException();
 		}
 		
 	}
@@ -59,6 +60,7 @@ private CollaboratorRepository CollaboratorRepository;
         
 	}
 
+	
 	@Override
 	public void deleteById(int theId) {
 		if (CollaboratorRepository.existsById(theId)) {
@@ -66,7 +68,7 @@ private CollaboratorRepository CollaboratorRepository;
 			CollaboratorRepository.deleteById(theId);
 
         } else {
-            throw new RuntimeException("Could not find a Collaborator id - "+theId);
+        	throw new NotFoundException();//throw new RuntimeException("Could not find a Collaborator id - "+theId);
         }
 	}
 	
@@ -85,7 +87,7 @@ private CollaboratorRepository CollaboratorRepository;
 
         } else {
 
-            throw new RuntimeException("Could not find a Collaborator with id " + collaboratorDto.getId());
+        	throw new NotFoundException();//throw new RuntimeException("Could not find a Collaborator with id " + collaboratorDto.getId());
         }
 
     }

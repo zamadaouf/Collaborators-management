@@ -2,6 +2,8 @@ package novelis.miniprojet.cruddemo.miniProjectcrudDemo.exceptionHandler;
 
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.springframework.web.servlet.NoHandlerFoundException;
  
 @XmlRootElement(name = "error")
 public class ErrorResponse {
@@ -19,6 +21,10 @@ public class ErrorResponse {
         this.details = details;
     }
  
+//    public ErrorResponse(Throwable ex) {
+//        super();
+//        this.message = ex;
+//    }
 
     
     //Getter and setters
