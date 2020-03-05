@@ -1,11 +1,20 @@
 input = 0;
 
-
-/* click on search event ***********/
-$("div").on("click", ".btn-search", function(event) {
+/* input change event ***********/
+$("div").on("keyup", ".search-input", function(event) {
 		
 	input = document.querySelector('.search-input').value;
+	
+	  if (event.keyCode === 13) {
+	   event.preventDefault();
+	   document.querySelector(".btn-search").click();
+	  }
+	
+})
 
+
+$("div").on("click", ".btn-search", function(event) {
+		
 	var url = "http://localhost:8080/";
 
 	  fetch(url + 'Collaborators/' + input, {
