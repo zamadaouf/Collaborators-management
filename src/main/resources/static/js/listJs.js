@@ -200,7 +200,7 @@ $("body").on("click", ".table-row", function(event) { // bind the parent and spe
     if (matches) { 
     	collabID = matches[0]; 
     } 
-	console.log("-->"+collabID);
-	localStorage.setItem('id',collabID);												  // element that we want to apply the event on it
-	window.document.location = $(this).data("href");
+	
+	localStorage.setItem('id',collabID);										  // element that we want to apply the event on it
+	window.document.location = $(this).data("href");//"http://localhost:8080/Collab/"+collabID;//
 });

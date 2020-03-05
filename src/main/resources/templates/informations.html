@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Informations</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -28,7 +28,7 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
+				<input type="hidden" th:value="${id}" id="id">
 			<div class="manage-collabs collapse navbar-collapse"
 				id="navbarTogglerDemo02">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -39,11 +39,11 @@
 					<li class="nav-item active"><a class="nav-link"
 						href="./form.html">Add Collaborator</a></li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search"
+				<div class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2 search-input " type="search"
 						placeholder="Search">
-					<button class="btn btn-outline-search my-2 my-sm-0" type="submit">Search</button>
-				</form>
+					<button class="btn btn-outline-search my-2 my-sm-0 btn-search" type="submit">Search</button>
+				</div>
 			</div>
 		</nav>
 	</header>
@@ -67,16 +67,20 @@
 					<div class="col align-self-end">
 						<div class=" d-flex flex-row-reverse ">
 							<div class="p-2 bd-highlight delete-btn">
-								<button type="submit" class="btn btn-primary delete">
-									<span class="icon"><i class="fa fa-trash"
-										aria-hidden="true"></i></span>
-								</button>
+								
+									<button type="submit" class="btn btn-primary btn-delete" data-confirm="Are you sure you want to delete this collaborator ? ">
+										<span class="icon"><i class="fa fa-trash"
+											aria-hidden="true"></i></span>
+									</button>
+								
 							</div>
 							<div class="p-2 bd-highlight update-btn">
-								<button type="submit" class="btn btn-primary update">
-									<span class="icon"><i class="fa fa-pencil"
-										aria-hidden="true"></i></span>
-								</button>
+								
+									<button type="submit" class="btn btn-primary btn-update">
+										<span class="icon"><i class="fa fa-pencil"
+											aria-hidden="true"></i></span>
+									</button>
+								
 							</div>
 						</div>
 					</div>
@@ -89,5 +93,6 @@
 		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" th:src="@{/js/infosJs.js}"></script>
+	<script type="text/javascript" th:src="@{/js/headerJs.js}"></script>
 </body>
 </html>

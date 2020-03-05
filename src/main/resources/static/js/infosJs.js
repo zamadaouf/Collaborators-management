@@ -1,7 +1,10 @@
+collabID = '';
+
 window.onload = () => {
 	
-	let param = localStorage.getItem('id');
-	const SERVER_URL = 'http://localhost:8080/Collaborators/'+param;
+	collabID = $("#id").val();
+	console.log(collabID);
+	const SERVER_URL = 'http://localhost:8080/Collaborators/'+collabID;
  
 	const collabInfos = document.querySelector('.collab-infos');
 
@@ -21,19 +24,25 @@ window.onload = () => {
     })
 
     .catch(err => console.log('Error:', err));
+
 };
 
 /* click on delete event ***********/
-$(".delete-btn").on("click", ".delete", function(event) {
-	
-	fetch("http://localhost:8080/Collaborators/")
-	.then(res => res.json())
-	.then(data => {data.forEach(obj => {
-        if(obj.id==4){
-		    console.log(obj.firstName);
-        }
-      })  
-	})
-
-    .catch(err => console.log('Error:', err));
+$(".delete-btn").on("click", ".btn-delete", function(event) {
+	var url = "http://localhost:8080/"
+      event.preventDefault();
+      var choice = confirm(this.getAttribute('data-confirm'));
+      if (choice) {
+    	  fetch(url + 'Collaborators/' + collabID, {
+    			method: 'delete'
+    		    })
+    		    .then(response =>
+    		     response.json()
+    		    .then(json => {
+    		      return json;
+    		     })
+    		  )
+    		  .catch(err => console.log('Error:', err));
+    	  window.location.href = url+'Collabs';
+      }
 })

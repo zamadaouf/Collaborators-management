@@ -32,10 +32,11 @@
                         <a class="nav-link" href="./form.html">Add Collaborator</a>
                     </li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search">
-					<button class="btn btn-outline-search my-2 my-sm-0" type="submit">Search</button>
-				</form>
+				<div class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2 search-input " type="search"
+						placeholder="Search">
+					<button class="btn btn-outline-search my-2 my-sm-0 btn-search" type="submit">Search</button>
+				</div>
 			</div>
 		</nav>
 	</header>
@@ -83,5 +84,6 @@
  		 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   			crossorigin="anonymous"></script>
 	<script type="text/javascript" th:src="@{/js/listJs.js}"></script>
+	<script type="text/javascript" th:src="@{/js/headerJs.js}"></script>
 </body>
 </html>

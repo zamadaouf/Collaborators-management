@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.service.CollaboratorService;
 
@@ -25,8 +26,12 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/Collab/{id}")
-	public String showSpecificCollab(@PathVariable int id) {
-		return "informations";
+	public ModelAndView showSpecificCollab(@PathVariable int id) {
+		
+		 ModelAndView modelAndView = new ModelAndView("informations");
+		    modelAndView.addObject("id", id);
+		
+		return modelAndView;
 	}
 	
 
