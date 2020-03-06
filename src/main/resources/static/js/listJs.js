@@ -100,7 +100,6 @@ function fillTable(number){
     });
 		  	
 		table.replaceChild(newtbody, tbody);
-//		window.document.location = "http://localhost:8080/Collabs/page"+number;
 		
 	})
     .catch(err => console.log('Error:', err));	
@@ -123,6 +122,10 @@ function setPagination(number){
 			liClass.value = "page-item";
 			li.setAttributeNode(liClass);
 			
+			var liID = document.createAttribute("id");
+			liID.value = i+1;
+			li.setAttributeNode(liID);
+			
 			const a = document.createElement('a');
 		    var aClass = document.createAttribute("class");
 		    aClass.value = "page-link num-page";
@@ -142,12 +145,30 @@ function setPagination(number){
 		})
 }
 
+/* setPaginationBG */
+function setPaginationBG(number){
+	var a = document.querySelectorAll(".page-link");
+	a[number].style.backgroundColor = "#0D3C55";
+	
+	for(let n=1 ; n<=pageCount ; n++){
+		
+		if(n==number){
+			continue;
+		}
+		a[n].style.backgroundColor = "#FFF";
+	}	
+}
+
 
 /* on Load         ******************/
 window.onload = () => {
+	console.log("load nP"+numPage);
+
 	getPageParam(numPage);
 	fillTable(numPage);	
 	setPagination(numPage);
+	setTimeout(function(){setPaginationBG(numPage);}, 400);
+	
 };
 
 
@@ -155,6 +176,7 @@ window.onload = () => {
 $("ul").on("click", ".num-page", function(event) {
 	
 	numPage =$(this).text();
+	setPaginationBG(numPage);
 	getPageParam(numPage);
 	fillTable(numPage);
 
@@ -170,7 +192,7 @@ $("ul").on("click", ".next-page", function(event) {
 		console.log("to next");
 		console.log("numPage "+currentPage);
 		console.log("next to "+nextPageNumber);
-		
+		setPaginationBG(nextPageNumber);
 		fillTable(nextPageNumber);	
 		getPageParam(nextPageNumber);
 	}
@@ -185,7 +207,7 @@ $("ul").on("click", ".prev-page", function(event) {
 		console.log("to prev");
 		console.log("numPage "+currentPage);
 		console.log("prev to "+prevPageNumber);
-		
+		setPaginationBG(prevPageNumber);
 		fillTable(prevPageNumber);	
 		getPageParam(prevPageNumber);
 	}

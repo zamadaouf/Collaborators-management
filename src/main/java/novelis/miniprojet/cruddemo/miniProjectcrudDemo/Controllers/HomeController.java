@@ -20,6 +20,11 @@ public class HomeController {
 		this.collaboratorService = collaboratorService;
 	}
 
+	@RequestMapping("/")
+	public String goHome() {
+		return "home";
+	}
+	
 	@RequestMapping("/Collabs")
 	public String showCollabs() {
 		return "collaboratorsList";

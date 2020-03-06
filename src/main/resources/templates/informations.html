@@ -28,7 +28,6 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-				<input type="hidden" th:value="${id}" id="id">
 			<div class="manage-collabs collapse navbar-collapse"
 				id="navbarTogglerDemo02">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -39,6 +38,7 @@
 					<li class="nav-item active"><a class="nav-link"
 						href="./form.html">Add Collaborator</a></li>
 				</ul>
+				<input type="hidden" th:value="${id}" id="id">
 				<div class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2 search-input " type="search"
 						placeholder="Search">
@@ -63,12 +63,10 @@
 					<div class="col align-self-end">
 						<div class=" d-flex flex-row-reverse ">
 							<div class="p-2 bd-highlight delete-btn">
-								
-									<button type="submit" class="btn btn-primary btn-delete" data-confirm="Are you sure you want to delete this collaborator ? ">
-										<span class="icon"><i class="fa fa-trash"
-											aria-hidden="true"></i></span>
-									</button>
-								
+								<button type="submit" class="btn btn-primary btn-delete" data-confirm="Are you sure you want to delete this collaborator ? ">
+									<span class="icon"><i class="fa fa-trash"
+										aria-hidden="true"></i></span>
+								</button>
 							</div>
 							<div class="p-2 bd-highlight update-btn">
 								
