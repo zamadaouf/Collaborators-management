@@ -1,285 +1,43 @@
-html { -
-	-myBleu: #0D3C55; -
-	-myRed: #91090B; -
-	-myBackground: #f4efeb; -
-	-golden: #FFD700;
-}
-
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
-/* line 27, ../sass/footerStyle.scss */
-* {
-	margin: 0;
-	padding: 0;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
 html{
     --myBleu:#0D3C55;
     --myRed:#91090B;
     --myBackground:#f4efeb;
-    --golden: #FFD700;
 }
-
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
-/* line 27, ../sass/footerStyle.scss */
-* {
-  margin: 0;
-  padding: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	color: #FFF;
+	background-color: var(--myBleu);
+	font-size:1rem!important;
+	
 }
-
-/* line 33, ../sass/footerStyle.scss */
-body {
-  background: white;
-  font: 14px Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-  color: var(--golden);
-  margin: 0!important;
-  border: 0!important;
+h5.text-uppercase{
+	padding-bottom:10px;
 }
-
-/* line 39, ../sass/footerStyle.scss */
-a , p {
-  color: white;
+div.row div{
+	padding-bottom:30px;
 }
-
-/* line 41, ../sass/footerStyle.scss */
-a:hover {
-  text-decoration: none;
-  color: var(--myRed);
+.list-unstyled{
+	margin-bottom:10px;
 }
-
-/* line 50, ../sass/footerStyle.scss */
-.content {
-  width: 80%;
-  height: 602px;
-  margin: 0 auto 0 0;
-  /*margin: 0 auto 5vh;*/
-  position: relative;
-  background-color: white;
-}
-/* line 57, ../sass/footerStyle.scss */
-.content span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 2em;
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-/* line 73, ../sass/footerStyle.scss */
-.footer-container {
-  position: relative;
-  bottom: 0;
-}
-
-/* line 77, ../sass/footerStyle.scss */
-.footer {
-  background: white;
-  position: relative;
-  bottom: 0;
-}
-/* line 80, ../sass/footerStyle.scss */
-.footer .inner {
-  width: 80%;
-  height: 0vh;
-  margin: 0 auto;
-  position: absolute;
-  bottom: 0!important;
-}
-/* line 87, ../sass/footerStyle.scss */
-.footer .inner span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 1em;
-  color: #999999;
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-/* line 102, ../sass/footerStyle.scss */
-.pre-footer {
-  background: var(--myBleu);
-  /*border: 4px solid #fff;*/
-  position: absolute;
-  top: -20px;
-  height: 100px;
-  width: 100%;
-}
-
-/* line 110, ../sass/footerStyle.scss */
-.footer-menu {
-  width: 80%;
-  margin: 0 auto;
-  zoom: 1;
-  padding-top: 25px;
-}
-/* line 16, ../sass/footerStyle.scss */
-.footer-menu:before, .footer-menu:after {
-  content: "";
-  display: table;
-}
-/* line 20, ../sass/footerStyle.scss */
-.footer-menu:after {
-  clear: both;
-}
-/* line 114, ../sass/footerStyle.scss */
-.footer-menu > li {
-  display: block;
-  float: left;
-  width: 25%;
-  text-align: center;
-}
-
-/*.footul {
-  display: flex;
-}
-
-.footil{
-  flex: 1;
-}*/
-/* line 123, ../sass/footerStyle.scss */
-.footer-menu h3 {
-  height: 50px;
-  line-height: 40px;
-  font-size: 1em;
-  font-weight: 700;
-  color: var(--myBleu);
-}
+li.icon{
+	font-size:12px; 
+	width:26px; 
+	height:26px; 
+	line-height:26px; 
+	margin-left:6px; 
+	margin-right:6px;
+	margin-bottom:12px;
+	display: inline;
 
 
-
-
-
-/* line 33, ../sass/footerStyle.scss */
-body {
-	background: white;
-	font: 14px Candara, Calibri, Segoe, "Segoe UI", Optima, Arial,
-		sans-serif;
-	color: var(- -golden);
-	margin: 0 !important;
-	border: 0 !important;
 }
-
-/* line 39, ../sass/footerStyle.scss */
-a, p {
+li.icon a{
+	text-decoration:none;
 	color: white;
 }
 
-/* line 41, ../sass/footerStyle.scss */
-a:hover {
-	text-decoration: none;
-	color: var(- -myRed);
-}
-
-/* line 50, ../sass/footerStyle.scss */
-.content {
-	width: 80%;
-	height: 602px;
-	margin: 0 auto 0 0;
-	/*margin: 0 auto 5vh;*/
-	position: relative;
-	background-color: white;
-}
-/* line 57, ../sass/footerStyle.scss */
-.content span {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	font-size: 2em;
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-}
-
-/* line 73, ../sass/footerStyle.scss */
-.footer-container {
-	position: relative;
-	bottom: 0;
-}
-
-/* line 77, ../sass/footerStyle.scss */
-.footer {
-	background: white;
-	position: relative;
-	bottom: 0;
-}
-/* line 80, ../sass/footerStyle.scss */
-.footer .inner {
-	width: 80%;
-	height: 0vh;
-	margin: 0 auto;
-	position: absolute;
-	bottom: 0 !important;
-}
-/* line 87, ../sass/footerStyle.scss */
-.footer .inner span {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	font-size: 1em;
-	color: #999999;
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-}
-
-/* line 102, ../sass/footerStyle.scss */
-.pre-footer {
-	background: var(- -myBleu);
-	/*border: 4px solid #fff;*/
-	position: absolute;
-	top: -20px;
-	height: 100px;
-	width: 100%;
-}
-
-/* line 110, ../sass/footerStyle.scss */
-.footer-menu {
-	width: 80%;
-	margin: 0 auto;
-	zoom: 1;
-	padding-top: 25px;
-}
-/* line 16, ../sass/footerStyle.scss */
-.footer-menu:before, .footer-menu:after {
-	content: "";
-	display: table;
-}
-/* line 20, ../sass/footerStyle.scss */
-.footer-menu:after {
-	clear: both;
-}
-/* line 114, ../sass/footerStyle.scss */
-.footer-menu>li {
-	display: block;
-	float: left;
-	width: 25%;
-	text-align: center;
-}
-
-.footul {
-  display: flex;
-}
-
-.footil{
-  flex: 1;
-}
-/* line 123, ../sass/footerStyle.scss */
-.footer-menu h3 {
-	height: 50px;
-	line-height: 40px;
-	font-size: 1em;
-	font-weight: 700;
-	color: var(- -myBleu);
+.footer-copyright{
+	background-color: #082636;
 }

@@ -5,7 +5,8 @@ html{
 }
 nav.navbar{
 	background-color: var(--myBleu)!important;
-	padding-left: 0;
+	padding-left: 2px;
+	height:62px;
 }
 .navbar-brand{
 	margin-left: 30px!important;
@@ -24,4 +25,3 @@ ul.mr-auto{
 	border-color: var(--myRed);
 	/* z-index: 1; */
 }
-

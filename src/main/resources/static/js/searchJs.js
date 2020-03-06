@@ -17,7 +17,7 @@ $("div").on("click", ".btn-search", function(event) {
 		
 	var url = "http://localhost:8080/";
 	
-	
+	console.log("whattttttttttttttttttttttttttttttttttttttttttttttt");
 	fetch(url + 'Collaborators/' + input, {
 		method: 'get'
     })

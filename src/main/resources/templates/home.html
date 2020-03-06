@@ -1,91 +1,156 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="utf-8"/>
-	<title>Home</title>
+<meta charset="utf-8" />
+<title>Home</title>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<!-- css -->
-	<link rel="stylesheet" type="text/css" th:href=@{/css/headerStyle.css}>
-	<link rel="stylesheet" type="text/css" th:href=@{/css/footerStyle.css}>
-	<link rel="stylesheet" type="text/css" th:href=@{/css/screenSass.css}>
-	
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<!-- css -->
+<link rel="stylesheet" type="text/css" th:href=@{/css/headerStyle.css}>
+<link rel="stylesheet" type="text/css" th:href=@{/css/footerStyle.css}>
+
 
 </head>
 <body>
 	<header>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <img height="45" alt="novelis" th:src=@{/images/novelis-logo.jpg}>
-            <div><a class="navbar-brand" href="#">Collaborators</a></div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <input type="hidden" th:value="${id}" id="id">
-            <div class="manage-collabs collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#" id="home">Home</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="" id="collabList">Collaborators' List</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="add.html" id="addCollab">Add Collaborator</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                    <button class="btn btn-outline-search my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
-    </header>
-    <div class="container-fluid content">
-  		<span></span>
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<img height="55" alt="novelis" th:src="@{/images/novelis-logo.jpg}">
+			<div>
+				<a class="navbar-brand" href="#">Collaborators</a>
+			</div>
+			<button type="button" class="navbar-toggler" data-toggle="collapse"
+				data-target="#navbarTogglerDemo02">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<input type="hidden" th:value="${id}" id="id">
+			<div class="manage-collabs collapse navbar-collapse"
+				id="navbarTogglerDemo02">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active"><a class="nav-link" href="http://localhost:8080/">Home</a>
+					</li>
+					<li class="nav-item active"><a class="nav-link" href="http://localhost:8080/Collabs/">Collaborators'
+							List</a></li>
+					<li class="nav-item active"><a class="nav-link" href="http://localhost:8080/Collabs/add">Add
+							Collaborator</a></li>
+				</ul>
+				<div class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2 search-input" type="search"
+						placeholder="Search">
+					<button class="btn btn-outline-search my-2 my-sm-0 btn-search" type="submit">Search</button>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	
+	<div class="container-fluid content">
+		<span></span>
 	</div>
-	<div class="footer-container">
-  		<div class="pre-footer">
-    		<ul class="footer-menu">
-      			<li>
-        			<h3></h3>
-        			<ul class="footul">
-          				<li><p style="color: white;">Adresse :</p><p> 4, N°12، 6, Boulevard Al Maqdis, Hay Al Qods Etage، Oujda 60050</p></li>
-        			</ul>
-      			</li>
-    			<li>
-        			<h3></h3>
-        			<ul class="footul">
-          				<li><p style="color: white;">Téléphone :</p><p> 05365-07365</p></li>
-        			</ul>        
-      			</li>
-      			<li>
-        			<h3></h3>
-        			<ul class="footul">
-                  <li><p style="color: white;">Email:</p><a href="mailto:info@novelis.io"> info@novelis.io</a></li>
-        			</ul >        
-      			</li>
-      			<li>
-        			<h3></h3>
-        			<ul class="footul">
-          				<li class="footil"><a id="soc_icon_5e5fab178ee2d" href="https://twitter.com/NOVELIS_SA" class="fab fa-twitter" style="font-size:12px; width:26px; height:26px; line-height:26px; margin-left:6px; margin-right:6px; margin-bottom:12px; " target="_blank" title="Twitter"></a></li>
-          				<li class="footil"><a id="soc_icon_5e5fab178eea3" href="https://fr-fr.facebook.com/novelis.io" class="fab fa-facebook" style="font-size:12px; width:26px; height:26px; line-height:26px; margin-left:6px; margin-right:6px; margin-bottom:12px; " target="_blank" title="Facebook"></a></li>
-                  <li class="footil"><a id="soc_icon_5e5fab178ef03" href="https://www.linkedin.com/company/novelis-consulting/" class="fab fa-linkedin" style="font-size:12px; width:26px; height:26px; line-height:26px; margin-left:6px; margin-right:6px; margin-bottom:12px; " target="_blank" title="Linkedin"></a></li>
-        			</ul>        
-      			</li>
-    		</ul>
-  		</div>
-  		<div class="footer">
-    		<div class="inner">
-    			<!--span>© 2020 All Rights Reserved @Novelis</span-->
-    		</div>
-  		</div>
-	</div>
-  <!-- js -->
-  <script src="https://kit.fontawesome.com/779820428c.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script type="text/javascript" th:src=@{/js/app.js}></script>
-  <script type="text/javascript" th:src=@{/js/searchJs.js}></script>
+	
+	
+	<!-- Footer -->
+	<footer class="page-footer font-small blue pt-4 ">
+
+		<!-- Footer Links -->
+		<div class="container-fluid text-center text-md-left container-footer">
+
+			<!-- Grid row -->
+			<div class="row">
+
+				<!-- Grid column -->
+				<div class="col-md-4 mt-md-0 mt-3">
+
+					<!-- Content -->
+					<h5 class="text-uppercase">Adsress</h5>
+					<p>4, N°12، 6, Boulevard Al Maqdis, Hay Al Qods Etage، Oujda
+						60050</p>
+
+				</div>
+				<!-- Grid column -->
+
+				<hr class="clearfix w-100 d-md-none pb-3">
+
+				<!-- Grid column -->
+				<div class="col-md-3 mb-md-0 mb-3">
+
+					<!-- Links -->
+					<h5 class="text-uppercase">Telephone</h5>
+
+					<ul class="list-unstyled">
+						<li>
+							<p>05365-07365</p>
+						</li>
+					</ul>
+
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-md-3 mb-md-0 mb-3">
+
+					<!-- Links -->
+					<h5 class="text-uppercase">Email</h5>
+
+					<ul class="list-unstyled">
+						<li>
+							<p>info@novelis.io</p>
+						</li>
+					</ul>
+
+				</div>
+				<!-- Grid column -->
+				<!-- Grid column -->
+				<div class="col-md-2 mb-md-0 mb-2">
+
+					<!-- Links -->
+					<h5 class="text-uppercase">more</h5>
+
+					<ul class="list-unstyled">
+						<li class="icon"><a id="soc_icon_5e5fab178ee2d"
+							href="https://twitter.com/NOVELIS_SA" class="fab fa-twitter"
+							target="_blank" title="Twitter"></a></li>
+						<li class="icon"><a id="soc_icon_5e5fab178eea3"
+							href="https://fr-fr.facebook.com/novelis.io"
+							class="fab fa-facebook" target="_blank" title="Facebook"></a></li>
+						<li class="icon"><a id="soc_icon_5e5fab178ef03"
+							href="https://www.linkedin.com/company/novelis-consulting/"
+							class="fab fa-linkedin" target="_blank" title="Linkedin"></a></li>
+					</ul>
+
+				</div>
+				<!-- Grid column -->
+
+			</div>
+			<!-- Grid row -->
+
+		</div>
+		<!-- Footer Links -->
+
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">
+			© 2020 Copyright : <a href="https://novelis.io/"> Novelis.io </a>
+		</div>
+		<!-- Copyright -->
+
+	</footer>
+	<!-- Footer -->
+
+
+	<!-- js -->
+	<script src="https://kit.fontawesome.com/779820428c.js"></script>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" th:src=@{/js/searchJs.js}></script>
 </body>
 </html>
