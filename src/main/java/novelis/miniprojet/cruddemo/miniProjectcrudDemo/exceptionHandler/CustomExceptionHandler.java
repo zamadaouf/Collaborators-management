@@ -37,22 +37,3 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 		}	
 
 }
-//@ControllerAdvice
-//public class CustomExceptionHandler {
-//
-//    @ExceptionHandler(NoHandlerFoundException.class)
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    public @ResponseBody ResponseEntity<ErrorResponse> handleNoMethodException(HttpServletRequest request,
-//            NoHandlerFoundException ex) {
-//        ErrorResponse errorResponse = new ErrorResponse(ex);
-//        errorResponse.setMessage("resource not found with exception");
-//        return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.NOT_FOUND);
-//    }
-//
-//    @ExceptionHandler(Throwable.class)
-//    public @ResponseBody ResponseEntity<ErrorResponse> handleDefaultException(Throwable ex) {
-//        ErrorResponse errorResponse = new ErrorResponse(ex);
-//        errorResponse.setMessage("request has empty body  or exception occured");
-//        return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.BAD_REQUEST);
-//    }
-//}

@@ -11,6 +11,7 @@ import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dao.CollaboratorRepositor
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity.Collaborator;
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.exceptionHandler.NotFoundException;
+import novelis.miniprojet.cruddemo.miniProjectcrudDemo.exceptionHandler.ValidationException;
 
 @Service
 public class CollaboratorServiceImpl implements CollaboratorService{
@@ -56,7 +57,7 @@ private CollaboratorRepository CollaboratorRepository;
 	public CollaboratorDto save(CollaboratorDto theCollaboratorDto) {
 		
 		if(theCollaboratorDto.isEmpty()) {
-			throw new NotFoundException();
+			throw new ValidationException();
 		}
 		Collaborator save = CollaboratorRepository.save(theCollaboratorDto.convertToCollaborator());
         return save.convertToDto(); 
@@ -90,7 +91,7 @@ private CollaboratorRepository CollaboratorRepository;
 
         } else {
 
-        	throw new NotFoundException();//throw new RuntimeException("Could not find a Collaborator with id " + collaboratorDto.getId());
+        	throw new ValidationException();//throw new RuntimeException("Could not find a Collaborator with id " + collaboratorDto.getId());
         }
 
     }

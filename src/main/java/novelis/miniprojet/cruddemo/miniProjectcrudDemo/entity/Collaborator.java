@@ -8,10 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 
@@ -41,7 +44,8 @@ public class Collaborator {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 
-	
+	@DateTimeFormat(iso=ISO.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "birth_date")
 	private Date birthDate;
 
@@ -102,13 +106,6 @@ public class Collaborator {
 	}
 
 	public Date getBirthDate() {
-//		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-//        String dateOfBirth = formatter.format(birthDate);
-//		try {
-//			birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(dateOfBirth);
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}  
 		return birthDate;
 	}
 	
@@ -139,7 +136,6 @@ public class Collaborator {
 	// convert to/from DTO
 
 	public CollaboratorDto convertToDto() {
-		System.out.println(birthDate);
 		return new CollaboratorDto(id, firstName, lastName, civility, birthDate, email, phoneNumber);
 	}
 

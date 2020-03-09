@@ -2,9 +2,13 @@ package novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto;
 
 import java.util.Date;
 
-import javax.validation.constraints.Email;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -35,6 +39,8 @@ public class CollaboratorDto {
 //	@Pattern(    
 //			regexp = "((?:19|20)[0-9]{2})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])",
 //			message = "the date is not valide")
+	@DateTimeFormat(iso=ISO.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date birthDate;
 
 	@NotNull(message = "please enter your civility")
