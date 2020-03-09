@@ -1,11 +1,6 @@
 package novelis.miniprojet.cruddemo.miniProjectcrudDemo.entity;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +11,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 import novelis.miniprojet.cruddemo.miniProjectcrudDemo.dto.CollaboratorDto;
 
@@ -47,7 +43,6 @@ public class Collaborator {
 
 	
 	@Column(name = "birth_date")
-	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date birthDate;
 
 
@@ -144,6 +139,7 @@ public class Collaborator {
 	// convert to/from DTO
 
 	public CollaboratorDto convertToDto() {
+		System.out.println(birthDate);
 		return new CollaboratorDto(id, firstName, lastName, civility, birthDate, email, phoneNumber);
 	}
 

@@ -47,8 +47,9 @@ $(".delete-btn").on("click", ".btn-delete", function(event) {
 })
 
 /* click on update event ***********/
-$(".delete-btn").on("click", ".btn-update", function(event) {
+$(".update-btn").on("click", ".btn-update", function(event) {
 
-	//put your code here :D 
+	document.location.href = 'http://localhost:8080/Collab/edit/'+collabID;
+    event.preventDefault();
 	
 })

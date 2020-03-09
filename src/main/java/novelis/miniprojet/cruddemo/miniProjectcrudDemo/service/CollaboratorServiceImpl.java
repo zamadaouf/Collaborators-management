@@ -55,6 +55,9 @@ private CollaboratorRepository CollaboratorRepository;
 	@Override
 	public CollaboratorDto save(CollaboratorDto theCollaboratorDto) {
 		
+		if(theCollaboratorDto.isEmpty()) {
+			throw new NotFoundException();
+		}
 		Collaborator save = CollaboratorRepository.save(theCollaboratorDto.convertToCollaborator());
         return save.convertToDto(); 
         

@@ -24,7 +24,7 @@ public class CollaboratorDto {
 	private String lastName;
 
 	@NotNull(message = "please enter your email address")
-	@Email(message = "the email is not valid")
+	@Pattern(regexp = "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)", message = "this email number is not valide")
 	private String email;
 
 	@NotNull(message = "please enter your phone number")
@@ -125,4 +125,10 @@ public class CollaboratorDto {
         		collaborator.getCivility(), collaborator.getBirthDate(),
         		collaborator.getEmail(), collaborator.getPhoneNumber());
     }
+	
+	public boolean  isEmpty() {
+		return this.firstName==null||this.lastName==null||this.civility==null||this.birthDate==null||
+				this.email==null||this.phoneNumber==null;
+	}
+	
 }
